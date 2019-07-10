@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  api:
+    build: .
+    command: bundle exec rails s -p 3001 -b '0.0.0.0'
+    volumes:
+      - .:/app
+      - bundle_path:/usr/local/bundle
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+# TODO: use specific images for each container (one Dockerfile for api and another for app)
+  app:
+    build: .
+    command: npm run start
+    volumes:
+      - ./client:/app
+    ports:
+      - "3000:3000"
+volumes:
+  bundle_path:
+  db_data:
