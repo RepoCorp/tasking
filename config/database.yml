@@ -8,9 +8,9 @@ default: &default
 
 development:
   <<: *default
-  database: qik_development
+  database: tasking_development
 
 
 test:
   <<: *default
-  database: qik_test
+  database: tasking_test
