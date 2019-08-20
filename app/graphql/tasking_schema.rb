@@ -1,4 +1,4 @@
-class QikSchema < GraphQL::Schema
+class TaskingSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 end
